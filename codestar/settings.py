@@ -136,5 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #List of trusted origins for request
 CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
-    "https://*herokuapp"
+    "https://.*herokuapp.com"
 ]
