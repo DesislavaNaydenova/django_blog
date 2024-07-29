@@ -6,13 +6,18 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-4 text-center">
-            <img src="{% static 'images/nobody.jpg' %}" width="75%">
+            {% if "placeholder" in about.profile_image.url %}
+            <img src="{% static 'images/nobody.jpg' %}" alt="placeholder image" width="75%">
+            {% else %}
+            <img src=" {{ about.profile_image.url }}" alt="{{ about.title }}" width="75%">
+            {% endif %}
+
         </div>
         <div class="col-8">
             <!-- Title goes between these h2 tags -->
             <h2>{{ about.title }}</h2>
             <!-- Content goes directly underneath this -->
-             {{ about.content | safe}}
+            {{ about.content | safe}}
         </div>
     </div>
     <div class="row">
@@ -20,12 +25,13 @@
             <!-- Updated on field goes in here -->
             <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
         </div>
-      </div>
-      <div class="row justify-content-center">
+    </div>
+    <div class="row justify-content-center">
         <div class="col-12 col-md-6 my-5">
             <h2>Let's collaborate!</h2>
             <p>I belive in the power of shared knowlege and collective effort.
-                Wheather you have a project in mind, wish to co-author an article, or simply want to brainstorm some ideas,
+                Wheather you have a project in mind, wish to co-author an article, or simply want to brainstorm some
+                ideas,
                 I'm excited to hear from you. Fill out the form and we can get the ball rolling!
             </p>
             <form method="post">
@@ -33,7 +39,7 @@
                 {% csrf_token %}
                 <button class="btn btn-secondary" type="submit">Submit</button>
             </form>
-            
+
         </div>
     </div>
 </div>
